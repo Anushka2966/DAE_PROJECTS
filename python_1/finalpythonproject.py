@@ -45,8 +45,8 @@ def make_sandwiches():
     sandwich_ingredients = [bread_type, condiments_used, sandwich_filling, extra_toppings]
     
     # Loop through the number of sandwiches requested
-    for i in range(number_of_sandwiches):
-        print(f"\nMaking sandwich #{i+1}:")
+    for current_number in range(number_of_sandwiches):
+        print(f"\nMaking sandwich #{current_number+1}:")
         prepare_sandwich(*sandwich_ingredients)
     
     # Display the tip amount
