@@ -1,39 +1,56 @@
 ﻿using System;
+using System.Collections.Generic;
 
-class Program
+public class Program
 {
+    private static string thankYouMessage = "Thank you!"; // Private
+
+    // Array to store sandwich types (fixed size)
+    private static string[] sandwichTypes = { "White bread with Chicken", "Whole wheat with Beef", "Rye bread with Ham" };
+
+    // List to store multiple thank you messages (dynamic size)
+    private static List<string> thankYouMessages = new List<string>(); // List
+
     // function to show sandwich
-    static void DisplaySandwich(string bread, string meat)
+    private static void DisplaySandwich(string sandwich) // Private
     {
-        // Correct way to format the string with variables
-        Console.WriteLine($"Sandwich: {bread} bread with {meat} meat.");
+        Console.WriteLine($"You chose: {sandwich}");
     }
 
-    static void Main(string[] args)
+    public static void Main(string[] args) // Public
     {
-        // variables
-        string bread, meat;
+        string userChoice;
 
-        // input
-        Console.Write("Enter bread type: ");
-        bread = Console.ReadLine();
-        Console.Write("Enter meat type: ");
-        meat = Console.ReadLine();
-
-        // check if string is empty
-        if (string.IsNullOrEmpty(bread) || string.IsNullOrEmpty(meat))
+        // Display the available sandwich types
+        Console.WriteLine("Available Sandwich Types:");
+        for (int i = 0; i < sandwichTypes.Length; i++)
         {
-            Console.WriteLine("Error: Please provide both bread and meat.");
+            Console.WriteLine($"{i + 1}. {sandwichTypes[i]}");
+        }
+
+        // Get user choice
+        Console.Write("Please select a sandwich by number (1-3): ");
+        userChoice = Console.ReadLine();
+
+        // Check if input is valid
+        if (string.IsNullOrEmpty(userChoice) || !int.TryParse(userChoice, out int choice) || choice < 1 || choice > 3)
+        {
+            Console.WriteLine("Error: Invalid selection.");
             return;
         }
 
-        // call function to show sandwich
-        DisplaySandwich(bread, meat);
+        // Call function to show sandwich based on user selection
+        DisplaySandwich(sandwichTypes[choice - 1]);
+
+        // Add thank you messages to the list
+        thankYouMessages.Add("Thank you for your order!");
+        thankYouMessages.Add("We appreciate your choice!");
+        thankYouMessages.Add("Enjoy your sandwich!");
 
         // loop to thank
-        for (int i = 0; i < 3; i++)
+        foreach (string message in thankYouMessages)
         {
-            Console.WriteLine("Thank you!");
+            Console.WriteLine(message); // Display thank you messages
         }
     }
 }
