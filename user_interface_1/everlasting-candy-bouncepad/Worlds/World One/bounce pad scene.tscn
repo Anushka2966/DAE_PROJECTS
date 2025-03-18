@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://de6mmwnhm1ch4"]
+
+[ext_resource type="Texture2D" uid="uid://doixfq04j7vl1" path="res://Image/bouncepadsprite.png" id="1_iuiiu"]
+
+[node name="BouncePadScene" type="Node2D"]
+position = Vector2(-228, -186)
+
+[node name="Bouncepadsprite" type="Sprite2D" parent="."]
+position = Vector2(-12, -68)
+scale = Vector2(0.19898, 0.223437)
+texture = ExtResource("1_iuiiu")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
